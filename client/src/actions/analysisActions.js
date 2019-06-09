@@ -3,7 +3,7 @@ import { GET_ERRORS } from './types';
 
 export const codeAnalyse = task => dispatch => {
   axios
-    .post('/api/compilers/run', task)
+    .post(':5000/api/compilers/run', task)
     .then(res => {
       dispatch({
         type: 'CODE_ANALYSIS',
