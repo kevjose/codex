@@ -39,8 +39,8 @@ http://ec2-52-66-200-202.ap-south-1.compute.amazonaws.com:5000
 #### steps to run in local machine
 
 ```
-git clone https://github.com/kevjose/cast_codex.git
-cd cast_codex
+git clone https://github.com/kevjose/codex.git
+cd codex
 npm install
 npm install --prefix client
 npm run dev
