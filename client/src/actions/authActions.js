@@ -5,7 +5,7 @@ import { GET_ERRORS, SET_CURRENT_USER, USER_LOADING } from './types';
 // Register User
 export const registerUser = (userData, history) => dispatch => {
   axios
-    .post(':5000/api/users/register', userData)
+    .post(window.location.hostname + ':5000/api/users/register', userData)
     .then(res => history.push('/login')) // re-direct to login on successful register
     .catch(err =>
       dispatch({
@@ -17,7 +17,7 @@ export const registerUser = (userData, history) => dispatch => {
 // Login - get user token
 export const loginUser = userData => dispatch => {
   axios
-    .post(':5000/api/users/login', userData)
+    .post(window.location.hostname + ':5000/api/users/login', userData)
     .then(res => {
       // Save to localStorage
       // Set token to localStorage
