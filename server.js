@@ -32,12 +32,13 @@ app.use(passport.initialize());
 // Passport config
 require('./config/passport')(passport);
 // Routes
-app.get('/*', function(req, res) {
-  res.sendFile(path.join(__dirname, 'client', 'build', 'index.html'));
-});
 app.use('/api/users', cors(), users);
 app.use('/api/compilers', cors(), compilers);
 app.use('/api/submissions', cors(), submissions);
+
+app.get('/*', function(req, res) {
+  res.sendFile(path.join(__dirname, 'client', 'build', 'index.html'));
+});
 
 const port = process.env.PORT || 5000;
 app.listen(port, () => console.log(`Server up and running on port ${port} !`));
