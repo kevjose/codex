@@ -55,7 +55,9 @@ class Login extends Component {
                 <b>Login</b> below
               </h4>
               <p className="grey-text text-darken-1">
-                Don't have an account? <Link to="/register">Register</Link>
+                Don't have an account? <Link to="/register">Register</Link>{' '}
+                <br /> or use <b>email:</b> user@example.com , <b>password:</b>{' '}
+                abcxyz1
               </p>
             </div>
             <form noValidate onSubmit={this.onSubmit}>

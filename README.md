@@ -4,7 +4,7 @@
 
 http://ec2-52-66-200-202.ap-south-1.compute.amazonaws.com:3000
 
-- sample user-pass `user@example.com` `abcxyz1`
+- sample email: `user@example.com` , password:`abcxyz1`
 
 #### The code analysis platform
 
