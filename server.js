@@ -3,12 +3,15 @@ const mongoose = require('mongoose');
 const bodyParser = require('body-parser');
 const passport = require('passport');
 const cors = require('cors');
+const path = require('path');
 const users = require('./routes/api/users');
 const compilers = require('./routes/api/compiler');
 const submissions = require('./routes/api/submissions');
 
 const app = express();
 app.use(cors());
+
+app.use(express.static(path.join(__dirname, 'client', 'build')));
 // Bodyparser middleware
 app.use(
   bodyParser.urlencoded({
@@ -29,6 +32,9 @@ app.use(passport.initialize());
 // Passport config
 require('./config/passport')(passport);
 // Routes
+app.get('/*', function(req, res) {
+  res.sendFile(path.join(__dirname, 'client', 'build', 'index.html'));
+});
 app.use('/api/users', cors(), users);
 app.use('/api/compilers', cors(), compilers);
 app.use('/api/submissions', cors(), submissions);
