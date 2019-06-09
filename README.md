@@ -4,6 +4,8 @@
 
 http://ec2-52-66-200-202.ap-south-1.compute.amazonaws.com:3000
 
+- sample user-pass `user@example.com` `abcxyz1`
+
 #### The code analysis platform
 
 - This is a simple static code analyser for Javascript using jshint and Python using flake8
@@ -43,3 +45,5 @@ npm install
 npm install --prefix client
 npm run dev
 ```
+
+- the above will open a browser on port 3000

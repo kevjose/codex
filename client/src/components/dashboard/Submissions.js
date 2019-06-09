@@ -23,16 +23,15 @@ class Submissions extends React.Component {
               <p>
                 <strong>Language:&nbsp;&nbsp;&nbsp;&nbsp;</strong> {sub.lang}
               </p>
-              <pre>
-                <strong>Code:&nbsp;&nbsp;&nbsp;&nbsp;</strong> {sub.code}
-              </pre>
+              <strong>Code:&nbsp;&nbsp;&nbsp;&nbsp;</strong>
+              <pre>{sub.code}</pre>
               <br />
               <time>
                 <strong>Created At:&nbsp;&nbsp;&nbsp;&nbsp;</strong>
                 {sub.created_at}
               </time>
             </div>
-            <div className="card-action">
+            <div className="card-action  blue lighten-5">
               <strong>Analysis:&nbsp;&nbsp;&nbsp;&nbsp;</strong>
               <pre style={{ whiteSpace: 'pre-wrap' }}>{sub.analysis}</pre>
             </div>
