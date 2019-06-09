@@ -4,11 +4,15 @@ const RunnerManager = require('../../compiler/RunnerManager');
 
 router.post('/run', (req, res) => {
   const file = req.body;
-  console.log(`file.lang: ${file.lang}`, `file.code:${file.code}`);
+  console.log(
+    `file.lang: ${file.lang}`,
+    `file.code:${file.code}`,
+    `file.userId:${file.userId}`
+  );
   // res.json({
   //   success: true
   // });
-  RunnerManager.run(file.lang, file.code, res);
+  RunnerManager.run(file.lang, file.code, file.userId, res);
 });
 
 module.exports = router;

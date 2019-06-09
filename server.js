@@ -2,9 +2,10 @@ const express = require('express');
 const mongoose = require('mongoose');
 const bodyParser = require('body-parser');
 const passport = require('passport');
-var cors = require('cors');
+const cors = require('cors');
 const users = require('./routes/api/users');
 const compilers = require('./routes/api/compiler');
+const submissions = require('./routes/api/submissions');
 
 const app = express();
 app.use(cors());
@@ -30,17 +31,7 @@ require('./config/passport')(passport);
 // Routes
 app.use('/api/users', cors(), users);
 app.use('/api/compilers', cors(), compilers);
+app.use('/api/submissions', cors(), submissions);
 
 const port = process.env.PORT || 5000;
 app.listen(port, () => console.log(`Server up and running on port ${port} !`));
-if (process.env.NODE_ENV === 'production') {
-  app.get('/*', function(req, res) {
-    res.sendFile(path.join(__dirname, 'client/build/index.html'), function(
-      err
-    ) {
-      if (err) {
-        res.status(500).send(err);
-      }
-    });
-  });
-}

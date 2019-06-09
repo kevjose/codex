@@ -1,4 +1,5 @@
 import React, { Component } from 'react';
+import { Link } from 'react-router-dom';
 import PropTypes from 'prop-types';
 import { connect } from 'react-redux';
 import { logoutUser } from '../../actions/authActions';
@@ -39,13 +40,15 @@ class Dashboard extends Component {
 
   handleRun = event => {
     event.preventDefault();
-    const { task } = this.state;
-    this.props.codeAnalyse(task);
+    if (this.state.task.code) {
+      const { task } = this.state;
+      task.userId = this.props.auth.user.id;
+      this.props.codeAnalyse(task);
+    }
   };
 
   render() {
     const { user } = this.props.auth;
-    console.log(this.props.analysis);
     return (
       <div className="container valign-wrapper">
         <div className="row">
@@ -78,8 +81,8 @@ class Dashboard extends Component {
               <option value="" disabled>
                 Choose Coding Language
               </option>
-              <option value="0">JavaScript</option>
-              <option value="1">Python</option>
+              <option value="0">JavaScript (jshint)</option>
+              <option value="1">Python (flake8)</option>
             </select>
             <br />
             <CodeEditor
@@ -97,6 +100,13 @@ class Dashboard extends Component {
               Submit
               <i className="material-icons right">send</i>
             </button>
+            &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+            <Link
+              to="/submissions"
+              className="btn waves-effect waves-light hoverable blue"
+            >
+              All submissions
+            </Link>
             <br />
             <CodeResult />
           </div>

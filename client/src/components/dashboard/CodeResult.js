@@ -5,18 +5,24 @@ const CodeResult = props => {
   console.log(props);
   if (!props.analysis) {
     return <div />;
-  } else if (props.analysis && props.analysis.response.status === '0') {
+  } else if (
+    props.analysis &&
+    props.analysis.response.message === 'No code problems'
+  ) {
     return (
-      <div className="card blue-grey darken-1">
+      <div className="card green darken-1">
         <div className="card-content white-text">
           <span className="card-title">Success</span>
           <p>{props.analysis.response.message}</p>
         </div>
       </div>
     );
-  } else if (props.analysis && props.analysis.response.status !== '0') {
+  } else if (
+    props.analysis &&
+    props.analysis.response.message !== 'No code problems'
+  ) {
     return (
-      <div className="card blue-grey darken-1">
+      <div className="card orange darken-1">
         <div className="card-content white-text">
           <span className="card-title">Warning</span>
           <p>{props.analysis.response.message}</p>

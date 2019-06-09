@@ -2,6 +2,7 @@ const path = require('path');
 const FileApi = require('./FileApi');
 const JavaScriptRunner = require('./JavaScriptRunner');
 const PythonRunner = require('./PythonRunner');
+const Submission = require('../models/Submission');
 
 function Factory() {
   this.createRunner = function createRunner(lang) {
@@ -18,7 +19,7 @@ function Factory() {
 }
 
 module.exports = {
-  run(lang, code, res) {
+  run(lang, code, userId, res) {
     const factory = new Factory();
     const runner = factory.createRunner(lang.toLowerCase());
 
@@ -36,7 +37,16 @@ module.exports = {
           status,
           message
         };
-        res.end(JSON.stringify(result));
+        const newSubmission = new Submission({
+          lang: lang,
+          code: code,
+          analysis: message,
+          userId: userId
+        });
+        newSubmission
+          .save()
+          .then(res.end(JSON.stringify(result)))
+          .catch(err => console.log(err));
       });
     });
   }
