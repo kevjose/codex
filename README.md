@@ -1,11 +1,5 @@
 # Codex
 
-#### Live at
-
-http://ec2-52-66-200-202.ap-south-1.compute.amazonaws.com:5000
-
-- sample email: `user@example.com` , password:`abcxyz1`
-
 #### The code analysis platform
 
 - This is a simple static code analyser for Javascript using jshint and Python using flake8
